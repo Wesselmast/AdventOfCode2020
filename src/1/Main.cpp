@@ -162,5 +162,7 @@ int main() {
 
   printf("expense report 1: %d\n", fetch_expense_report(list));
   printf("expense report 2: %d\n", fetch_expense_report_deeper(list));
+  
+  list.free_list();
   return 0;
 }
