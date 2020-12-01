@@ -108,20 +108,6 @@ struct List {
   }
 };
 
-inline void sort_list(List<int32>& list) {
-  Node<int32>* current = list.head;
-  Node<int32>* next    = list.head;
-  while(current) {
-    next = current->next;
-    if(next->data < current->data) {
-      int32 temp = next->data;
-      next->data = current->data;
-      current->data = temp;
-    }
-    current = next;
-  }
-}
-
 inline int32 fetch_expense_report(const List<int32>& list) {
   Node<int32>* x = list.head;
   while(x) {
