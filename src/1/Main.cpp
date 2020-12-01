@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <string>
 
+#include "Timer.cpp"
+
 typedef uint16_t uint16;
 typedef int32_t int32;
 
@@ -39,7 +41,7 @@ struct List {
   }
 };
 
-inline int32 fetch_expense_report(List<int32>& list) {
+inline int32 fetch_expense_report(const List<int32>& list) {
   Node<int32>* x = list.head;
   while(x) {
     Node<int32>* y = list.head;
@@ -55,7 +57,7 @@ inline int32 fetch_expense_report(List<int32>& list) {
   return -1;
 }
 
-inline int32 fetch_expense_report_deeper(List<int32>& list) {
+inline int32 fetch_expense_report_deeper(const List<int32>& list) {
   Node<int32>* x = list.head;
   while(x) {
     Node<int32>* y = list.head;
@@ -76,17 +78,17 @@ inline int32 fetch_expense_report_deeper(List<int32>& list) {
 }
 
 int main() {
+  TIMER("Solution total time");
+  
   std::ifstream file("res/1/data.txt", std::ios::in);
   if(!file.good()) {
     printf("file wasn't found\n");
   }
 
   List<int32> list;
-  std::string line;
-  for(uint16 i = 0; std::getline(file, line); ++i) {
-    list.insert(std::stoi(line)); 
-  }
-  
+  int32 line;
+  while(file >> line) list.insert(line); 
+
   printf("expense report 1: %d\n", fetch_expense_report(list));
   printf("expense report 2: %d\n", fetch_expense_report_deeper(list));
   return 0;
