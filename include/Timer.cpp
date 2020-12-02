@@ -10,7 +10,7 @@ struct Timer {
   }
 
   ~Timer() {
-    printf("%s : %fms\n", name, std::chrono::duration<double>(timer.now() - start).count());
+    printf("%s : %fs\n", name, std::chrono::duration<double>(timer.now() - start).count());
   }
 
   const char* name;
