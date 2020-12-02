@@ -152,6 +152,7 @@ int main() {
   std::ifstream file("res/1/data.txt", std::ios::in);
   if(!file.good()) {
     printf("file wasn't found\n");
+    return 1;
   }
 
   List<int32> list;
