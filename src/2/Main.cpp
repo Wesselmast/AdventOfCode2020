@@ -9,7 +9,7 @@ typedef uint16_t uint16;
 typedef int32_t int32;
 
 inline void validate_password_old(int32& result, char* str, char c, int32 low, int32 high) {
-  int count = 0;
+  int32 count = 0;
   for(int32 i = 0; str[i]; ++i) {
     count += (str[i] == c);
   }
