@@ -165,5 +165,6 @@ int main() {
   printf("expense report 2: %d\n", fetch_expense_report_deeper(list));
   
   list.free_list();
+  file.close();
   return 0;
 }

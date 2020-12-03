@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <fstream>
 #include <cstdint>
-#include <string>
 
 #include "Timer.cpp"
 
