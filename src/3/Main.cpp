@@ -40,15 +40,18 @@ int main() {
     return 1;
   }
 
-  char arr[512][256] = {0};
+  char arr[512][256];
   char line[256];
-  int32 index = 0;
-  int32 len;
+  int32 index = 1;
+  int32 len = 0;
+
+  file >> line;
+  strcpy(arr[index], line);
+  len = strlen(line);
 
   while(file >> line) {
     strcpy(arr[index], line);
     ++index;
-    len = strlen(line);
   }
 
   printf("simple treecount:   \t%d\n", count_trees(arr, len, index, 3, 1));  
