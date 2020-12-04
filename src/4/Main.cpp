@@ -47,7 +47,7 @@ inline bool parse_attribute(char* attribute, char* value) {
   return true;
 }
 
-inline void count_valid_and_present(FILE* file, char** attributes, int32 amt, char* line, int32& count) {
+inline void count_valid_and_present(char** attributes, int32 amt, char* line, int32& count) {
   char* token = strtok(line, ": ");
   while(token) {
     char cpy[256];
@@ -63,7 +63,7 @@ inline void count_valid_and_present(FILE* file, char** attributes, int32 amt, ch
   }
 }
 
-inline void count_valid(FILE* file, char** attributes, int32 amt, char* line, int32 lineLen, int32& count) {
+inline void count_valid(char** attributes, int32 amt, char* line, int32 lineLen, int32& count) {
   for(int32 i = 0; i < lineLen; ++i) {
     if(line[i] != ':') continue;
     
@@ -110,8 +110,8 @@ int main() {
 
     if(!r) break;
 
-    count_valid(file, (char**)attributes, amt, line, len, count1);
-    count_valid_and_present(file, (char**)attributes, amt, line, count2);
+    count_valid((char**)attributes, amt, line, len, count1);
+    count_valid_and_present((char**)attributes, amt, line, count2);
   }
 
   printf("result: %d\n", result1);
