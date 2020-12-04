@@ -117,6 +117,7 @@ int main() {
   printf("result: %d\n", result1);
   printf("result: %d\n", result2); 
 
+  free(line);
   fclose(file);
   return 0;
 }
