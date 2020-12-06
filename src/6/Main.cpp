@@ -41,9 +41,9 @@ int main() {
   int32 answers1 = 0;
   int32 answers2 = ~0;
 
-  char* line = (char*)malloc(512);
+  char* line = (char*)malloc(32);
   while(true) {
-    char* r = fgets(line, 512, file);
+    char* r = fgets(line, 32, file);
     int32 len = strlen(line) - 1;
     line[len] = 0;
 
@@ -70,8 +70,8 @@ int main() {
     mask_answered_yes(answers2, personCount);
   }
 
-  printf("P1: %d\n", result1);
-  printf("P2: %d\n", result2);
+  printf("  anyone answered 'yes' %d times\n", result1);
+  printf("everyone answered 'yes' %d times\n", result2);
 
   free(line);
   fclose(file);
