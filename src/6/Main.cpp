@@ -1,9 +1,5 @@
 #include <stdio.h>
-#include <fstream>
 #include <cstdint>
-#include <math.h>
-#include <vector>
-#include <algorithm>
 
 #include "Timer.cpp"
 
