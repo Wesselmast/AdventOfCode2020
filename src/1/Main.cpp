@@ -5,9 +5,7 @@
 
 #include "Timer.cpp"
 #include "Types.cpp"
-
-typedef uint16_t uint16;
-typedef int32_t int32;
+#include "List.cpp"
 
 inline int32 fetch_expense_report(const List<int32>& list) {
   Node<int32>* x = list.head;

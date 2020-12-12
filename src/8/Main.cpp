@@ -3,9 +3,7 @@
 #include <vector>
 
 #include "Timer.cpp"
-
-typedef int32_t int32;
-typedef uint8_t uint8;
+#include "Types.cpp"
 
 struct Command { 
   char cmd;

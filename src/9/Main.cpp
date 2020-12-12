@@ -3,9 +3,7 @@
 #include <fstream>
 
 #include "Timer.cpp"
-
-typedef int32_t int32;
-typedef uint64_t uint64;
+#include "Types.cpp"
 
 inline bool check_for_bad_preamble(uint64* values, int32 index, uint64 number, const int32 preamble) {
   for(int32 i = index - preamble; i < index; ++i) {

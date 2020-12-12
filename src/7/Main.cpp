@@ -4,9 +4,7 @@
 #include <string>
 
 #include "Timer.cpp"
-
-typedef int32_t int32;
-typedef uint8_t uint8;
+#include "Types.cpp"
 
 struct Bag {
   std::string stringID;

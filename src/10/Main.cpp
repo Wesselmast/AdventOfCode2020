@@ -5,9 +5,7 @@
 
 #include "Timer.cpp"
 #include "Types.cpp"
-
-typedef int32_t int32;
-typedef uint64_t uint64;
+#include "List.cpp"
 
 void calculate_jolt_differences(int32& one, int32& three, const List<int32>& adapters) {
   Node<int32>* current = adapters.head;

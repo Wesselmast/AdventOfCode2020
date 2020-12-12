@@ -2,9 +2,7 @@
 #include <cstdint>
 
 #include "Timer.cpp"
-
-typedef int32_t int32;
-typedef uint8_t uint8;
+#include "Types.cpp"
 
 inline int32 count_bits(int32 num) {
   int32 result = 0;

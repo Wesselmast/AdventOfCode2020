@@ -5,10 +5,7 @@
 #include <regex>
 
 #include "Timer.cpp"
-
-typedef uint16_t uint16;
-typedef uint8_t uint8;
-typedef int32_t int32;
+#include "Types.cpp"
 
 inline bool parse_attribute(char* attribute, char* value) {
   if(!strcmp(attribute, "byr")) {

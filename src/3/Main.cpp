@@ -4,9 +4,7 @@
 #include <string.h>
 
 #include "Timer.cpp"
-
-typedef uint16_t uint16;
-typedef int32_t int32;
+#include "Types.cpp"
 
 inline int32 count_trees(char arr[512][256], int32 cLength, int32 rLength, int32 cOffset, int32 rOffset) {
   int32 traversal = 0;

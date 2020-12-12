@@ -3,9 +3,7 @@
 #include <cstdint>
 
 #include "Timer.cpp"
-
-typedef uint16_t uint16;
-typedef int32_t int32;
+#include "Types.cpp"
 
 inline void validate_password_old(int32& result, char* str, char c, int32 low, int32 high) {
   int32 count = 0;

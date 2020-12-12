@@ -6,9 +6,7 @@
 #include <algorithm>
 
 #include "Timer.cpp"
-
-typedef int32_t int32;
-typedef uint8_t uint8;
+#include "Types.cpp"
 
 inline uint8 string_median(char* input, char right, char left, 
 			   uint8 first, uint8 last, uint8 low, uint8 high) {
