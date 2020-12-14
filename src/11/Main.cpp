@@ -7,21 +7,25 @@
 #include "Timer.cpp"
 #include "Types.cpp"
 
-const int32 GRID_COLS = 1024;
-const int32 GRID_ROWS = 256;
-const int32 GRID_SIZE = GRID_COLS * GRID_ROWS;
+#define B2B_PATTERN_8 "%c%c%c%c%c%c%c%c"
+#define B2B_8(i)    \
+    (((i) & 0x80ll) ? '1' : '0'), \
+    (((i) & 0x40ll) ? '1' : '0'), \
+    (((i) & 0x20ll) ? '1' : '0'), \
+    (((i) & 0x10ll) ? '1' : '0'), \
+    (((i) & 0x08ll) ? '1' : '0'), \
+    (((i) & 0x04ll) ? '1' : '0'), \
+    (((i) & 0x02ll) ? '1' : '0'), \
+    (((i) & 0x01ll) ? '1' : '0')
 
-inline void count_neighbours(char grid[GRID_COLS][GRID_ROWS], int32 x, int32 y, 
-			     int32 colLen, int32 rowLen, int32& res) {
-  res = 0;
-  for(int32 i = -1; i <= 1; ++i) {
-    for(int32 j = -1; j <= 1; ++j) {
-      int32 col = (x + i + colLen) % colLen;
-      int32 row = (y + j + rowLen) % rowLen;
-      res += grid[col][row] == '#';
-      printf("%c\n", grid[col][row]);
-    }
-  }
+#define B2B_PATTERN_16 B2B_PATTERN_8  B2B_PATTERN_8
+#define B2B_PATTERN_32 B2B_PATTERN_16 B2B_PATTERN_16
+
+#define B2B_16(i) B2B_8(i >> 8),   B2B_8(i)
+#define B2B_32(i) B2B_16(i >> 16), B2B_16(i)
+
+void print_as_binary(int32 n) {
+  printf(B2B_PATTERN_32, B2B_32(n));
 }
 
 void day_11() {
@@ -32,57 +36,28 @@ void day_11() {
     printf("file wasn't found\n");
     return;
   }
+ 
+  int32 values[128][4] = {0};
+  int32 seatMask[128][4] = {0};
 
-  char grid[GRID_COLS][GRID_ROWS];
-  int32 index = 0;
-  char line[GRID_ROWS];
+  char line[128];
+  int32 index = 1;
   while(file >> line) {
-    strcpy(grid[index], line);
-    ++index;
-  } 
-
-  int32 colLen = index; 
-  int32 rowLen = strlen(grid[0]);
-
-  int32 res = 0;
-  count_neighbours(grid, 1, 1, colLen, rowLen, res);
-  printf("%d\n", res);
-
-  bool changed = false;
-  while(changed) {
-    char next[GRID_COLS][GRID_ROWS];
-
-    for(int32 i = 0; i < colLen; ++i) {
-      for(int32 j = 0; j < rowLen; ++j) {
-	char state = grid[i][j];
-	if(state == '.') {
-	  next[i][j] = '.';
-	  continue;
-	}
-	int32 n = 0;
-	count_neighbours(grid, i, j, colLen, rowLen, n);
-	if(state == 'L' && n == 0) {
-	  next[i][j] = '#';
-	  changed = true;
-	  continue;
-	}
-	if(state == '#' && n > 3) {
-	  next[i][j] = 'L';
-	  changed = true;
-	  continue;
-	}
-	next[i][j] = state;
+    int32 len = strlen(line);
+    int32 depth = -1;
+    for(int32 i = 0; i < len; ++i) {
+      depth += i % 32 == 0;
+      if(line[i] != '.') {
+	seatMask[index][depth] |= 1 << ((i + 1) % 32);    //something here is not quite right!
       }
     }
-//    for(int32 i = 0; i < colLen; ++i) {
-//      for(int32 j = 0; j < rowLen; ++j) {
-//	printf("%c", next[i][j]);
-//      }
-//      printf("\n");
-//    }
-	 
-    memcpy(grid, next, GRID_SIZE);
+    ++index;
   }
+
+  for(int32 i = 3; i >= 0; --i) {
+    print_as_binary(seatMask[5][i]);
+  }
+  printf("\n");
 }
 
 
