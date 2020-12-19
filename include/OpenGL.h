@@ -86,8 +86,6 @@ Blueprint* create_blueprint(float* vertices, int32 size, const glm::vec3& color,
 }
 
 void triangle(float x, float y, float scale, const glm::vec3& color) {
-  scale *= 50;
-
   float vertices[] = {
     x - scale, y - scale,
     x + scale, y - scale,
@@ -99,8 +97,6 @@ void triangle(float x, float y, float scale, const glm::vec3& color) {
 }
 
 void rect(float x, float y, float scale, const glm::vec3& color) {
-  scale *= 50;
-
   float vertices[] = {
     x - scale, y - scale,
     x + scale, y - scale,
