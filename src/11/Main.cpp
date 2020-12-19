@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <fstream>
-#include <string>
-#include <vector>
 
 #include "Win32.h"
 #include "Timer.cpp"
